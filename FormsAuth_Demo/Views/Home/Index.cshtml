@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@{
+    if (Request.IsAuthenticated)
+    {
+        <p>当前用户已登录，用户名：@Context.User.Identity.Name</p>
+    }
+    else
+    {
+        <b>当前用户还未登录。</b>
+    }
+}
+
+<br />
+<br />
+<a href="/Home/SignOut">signout</a>
+
