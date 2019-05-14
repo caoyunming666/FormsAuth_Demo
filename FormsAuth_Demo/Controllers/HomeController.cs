@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -11,7 +12,10 @@ namespace FormsAuth_Demo.Controllers
     {
         public ActionResult Index()
         {
-//aaa
+            //这里存储的是 FormsAuthentication.SetAuthCookie(uname, true); 里的uname，这个变量可以换成用户信息的json字符串，到时候转换一下，就能
+            //获取更多的用户信息。
+            var ss = HttpContext.User.Identity.Name;
+
             return View();
         }
 
@@ -25,6 +29,8 @@ namespace FormsAuth_Demo.Controllers
         {
             if (!string.IsNullOrWhiteSpace(uname))
             {
+                //在正常的登陆功能里，这里需要修改，通过sql查询得到用户信息，记录用户的 id，名称，等信息存到cookie里。
+
                 FormsAuthentication.SetAuthCookie(uname, true);
                 return RedirectToAction("Index", "Home");
             }
