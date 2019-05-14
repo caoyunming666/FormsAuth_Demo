@@ -19,6 +19,7 @@ namespace FormsAuth_Demo.Controllers
         {
             if (!string.IsNullOrWhiteSpace(uname))
             {
+                //自动注册分发用户凭证
                 FormsAuthentication.SetAuthCookie(uname, true);
                 #region MyRegion
                 //FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
